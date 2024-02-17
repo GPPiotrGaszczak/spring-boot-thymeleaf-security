@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <link rel="stylesheet" href="assets/css/form-style.css">
+</head>
+<body>
+<footer>
+    <div sec:authorize="isAuthenticated()"><p sec:authentication="name"></p></div>
+</footer>
+</body>
+</html>

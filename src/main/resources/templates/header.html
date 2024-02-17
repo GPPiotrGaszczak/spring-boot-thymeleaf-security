@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <link rel="stylesheet" href="assets/css/form-style.css">
+</head>
+<body>
+<header>
+  <h2><a sec:authorize="isAnonymous()" th:href="@{/register}">Register</a></h2>
+  <h2><a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a></h2>
+  <h2>
+    <a th:class="${isAboutPage} ? 'hidden' : ''" th:href="@{/about}">About</a>
+  </h2>
+  <h2><a th:class="${isAdminPage} ? 'hidden' : ''" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-page}">Users</a></h2>
+  <h2><a sec:authorize="isAuthenticated()" th:href="@{/logYouOut}">Logout</a></h2>
+</header>
+</body>
+</html>

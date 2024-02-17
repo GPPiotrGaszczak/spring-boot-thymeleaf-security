@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <link rel="stylesheet" href="assets/css/form-style.css">
+    <title>Admin Page</title>
+</head>
+<body>
+    <div th:replace="~{header :: header}">...</div>
+        <h1>User list</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td><a th:text="${user.id}" th:href="@{/deleteUser/{id}(id=${user.id})}"></a></td>
+            <td><a th:text="${user.email}" th:href="@{/deleteUser/{email}(email=${user.email})}"></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:replace="~{footer :: footer}">...</div>
+</body>
+</html>

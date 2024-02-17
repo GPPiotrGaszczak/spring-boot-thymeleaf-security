@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="assets/css/form-style.css">
+    <title>About</title>
+</head>
+<body>
+    <div th:replace="~{header :: header}">...</div>
+        <h1 th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">Welcome, user</h1>
+        <h1 th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Welcome, admin</h1>
+    <div th:replace="~{footer :: footer}">...</div>
+</body>
+</html>

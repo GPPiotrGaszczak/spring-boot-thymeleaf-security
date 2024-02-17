@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="assets/css/form-style.css">
+    <title>Please Log In</title>
+</head>
+<body>
+    <div th:replace="~{header :: header}">...</div>
+    <h1>Please Log In</h1>
+
+    <form th:action="@{/login}" method="post">
+        <div th:if="${param.error}" class="error">Invalid username and password.</div>
+        <input type="text" name="username" placeholder="Username"/>
+        <input type="password" name="password" placeholder="Password"/>
+        <input type="submit" value="Log in" />
+    </form>
+
+    <div th:replace="~{footer :: footer}">...</div>
+</body>
+</html>
