@@ -21,7 +21,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldsValueMatch(field = "password", fieldMatch = "confirmPassword", message = "The password fields must match")
+@FieldsValueMatch(field = "password", fieldMatch = "confirmPassword", message = "Must match error")
 public class MyUser {
     @Id
     private ObjectId id;

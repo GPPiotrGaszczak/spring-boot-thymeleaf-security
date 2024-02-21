@@ -11,12 +11,10 @@
     <form th:action="@{/createUser}" th:object="${MyUser}" method="post">
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="errors"></div>
         <input type="text" th:field="*{email}" placeholder="email">
-
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="errors"></div>
         <input type="password" th:field="*{password}" placeholder="password">
         <div th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="errors"></div>
         <input type="password" th:field="*{confirmPassword}" placeholder="confirm password">
-
         <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="errors"></div>
         <input type="number" th:field="*{age}" placeholder="age">
         <input type="submit" value="Register">

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,15 +32,8 @@ public class RegisterController {
     }
 
     @PostMapping("/createUser")
-    public String createUser(@Valid @ModelAttribute("MyUser") MyUser myUser, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            String passwordMatchingMessage = bindingResult.getAllErrors().toString();
-            if(passwordMatchingMessage.contains("The password fields must match")) {
-                bindingResult.rejectValue("confirmPassword",
-                        "error.confirmPassword",
-                        "The password fields must match");
-            }
-
+    public String createUser(@Valid @ModelAttribute("MyUser") MyUser myUser, BindingResult bindingResult, Errors errors) {
+        if(errors.hasErrors()) {
             return "register";
         }
         if(!userRepository.existsByEmail(myUser.getEmail())) {
